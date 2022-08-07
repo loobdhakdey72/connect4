@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "board.hpp"
 #include <string>
 #include "solver.hpp"
@@ -7,31 +8,23 @@ using namespace Connect4;
 
 int main()
 {   
-
-    std::string seq = "772317571635257553221122";
-    Board b = Board(seq);
-    Solver s;
-    s.solve(b);
-
-    /*
-    while (true)
+    std::ifstream testfile;
+    testfile.open("testsuite/Test_end_easy.txt");
+    if (testfile.is_open())
     {
-        b.show();
-        int col;
-        std::cout << "Enter Column: " << std::endl; // Type a number and press enter
-        std::cin >> col; // Get user input from the keyboard
-        if (b.winningMove(col))
+        Solver s;
+        std::string line;
+        while (getline(testfile, line))
         {
-            b.play(col);
-            b.show();
-            break;
-        }
-        else
-        {
-            b.play(col);
+            int space = line.find(" ");
+            std::string seq = line.substr(0, space);
+            int expected = stoi(line.substr(space, line.length()));
+
+            if (s.solve(seq) == expected)
+                std::cout << "SUCCESS\n";
+            else
+                std::cout << "FAILURE\n";
         }
     }
-    */
-
     return 0;
 }

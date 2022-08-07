@@ -64,10 +64,8 @@ namespace Connect4
         return alpha;
     }
 
-    void Solver::solve(Board board)
-    {
-        std::cout << "Board eval " << negamaxab(board, -100, 100) << std::endl;
-        std::cout << "Nodes explored " << nnodes << std::endl;
+    int Solver::solve(Board board)
+    {   
+        return negamaxab(board, -100, 100);
     }
-
 }

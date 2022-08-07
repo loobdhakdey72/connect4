@@ -12,7 +12,7 @@ namespace Connect4
             Solver();
             int negamax(Board board);
             int negamaxab(Board board, int alpha, int beta);
-            void solve(Board board);
+            int solve(Board board);
             unsigned long long getnnodes();
     };
 }
