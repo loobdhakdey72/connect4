@@ -1,8 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include "board.hpp"
 #include <string>
+
 #include "solver.hpp"
+#include "board.hpp"
 
 using namespace Connect4;
 
