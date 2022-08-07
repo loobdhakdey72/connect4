@@ -10,7 +10,9 @@ namespace Connect4
                 
         public:
             Solver();
-            int solve(Board board);
+            int negamax(Board board);
+            int negamaxab(Board board, int alpha, int beta);
+            void solve(Board board);
             unsigned long long getnnodes();
     };
 }

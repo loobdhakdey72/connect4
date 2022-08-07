@@ -8,10 +8,10 @@ using namespace Connect4;
 int main()
 {   
 
-    std::string seq = "77231757163525755322112211433";
+    std::string seq = "772317571635257553221122";
     Board b = Board(seq);
     Solver s;
-    std::cout << s.solve(b) << std::endl;
+    s.solve(b);
 
     /*
     while (true)
