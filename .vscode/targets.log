@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Aug  7 23:01:00 2022
+# Make data base, printed on Tue Aug  9 14:33:52 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-aedb7f8a-2995-4402-bd3d-4ec50856ba02.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-9ceca94a-858e-4aa5-b98c-ba30a4490bf0.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -65,7 +65,7 @@ PWD = /home/loop/connect4
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/11_interop
+WSL_INTEROP = /run/WSL/14_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -153,9 +153,9 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2080, inode 74893): 16 files, no impossibilities.
+# . (device 2080, inode 74893): 19 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -176,6 +176,13 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
+hashmap.o: hashmap.cpp hashmap.hpp
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+	g++ -c hashmap.cpp
+
 # Not a target:
 board.hpp:
 #  Implicit rule search has not been done.
@@ -185,7 +192,7 @@ board.hpp:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-06 22:42:41.119671643
+#  Last modified 2022-08-09 14:33:41.678865407
 #  File has been updated.
 #  Successfully updated.
 
@@ -224,15 +231,21 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 14):
+#  recipe to execute (from 'Makefile', line 17):
 	rm *.o main
 
-main: main.o board.o solver.o
+# Not a target:
+hashmap.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+main: main.o board.o solver.o hashmap.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 2):
-	g++ main.o board.o solver.o -o main
+	g++ main.o board.o solver.o hashmap.o -o main
 
 main.o: main.cpp
 #  Implicit rule search has not been done.
@@ -240,6 +253,12 @@ main.o: main.cpp
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 5):
 	g++ -c main.cpp
+
+# Not a target:
+hashmap.hpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 solver.o: solver.cpp solver.hpp
 #  Implicit rule search has not been done.
@@ -249,21 +268,22 @@ solver.o: solver.cpp solver.hpp
 	g++ -c solver.cpp
 
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/35=0%
+# Load=17/1024=2%, Rehash=0, Collisions=0/42=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 188 B / avg = 8 B
-# current buf: size = 8162 B / used = 188 B / count = 22 / avg = 8 B
-
-# strcache performance: lookups = 43 / hit rate = 48%
-# hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=1/43=2%
-# Finished Make data base on Sun Aug  7 23:01:00 2022
+# strcache buffers: 1 (0) / strings = 25 / storage = 222 B / avg = 8 B
+# current buf: size = 8162 B / used = 222 B / count = 25 / avg = 8 B
 
  
 make: *** No rule to make target 'all'.  Stop.
 
+# strcache performance: lookups = 51 / hit rate = 50%
+# hash-table stats:
+# Load=25/8192=0%, Rehash=0, Collisions=1/51=2%
+# Finished Make data base on Tue Aug  9 14:33:52 2022
+
+ 

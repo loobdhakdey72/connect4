@@ -13,6 +13,11 @@ namespace Connect4  {
 		}
 	}
 
+	uint64_t Board::key()
+	{
+		return (playermask + fillmask);
+	}
+
 	int Board::nmoves()
 	{
 		return moves;
@@ -34,21 +39,22 @@ namespace Connect4  {
 	{
 		uint64_t p = playermask; 
         p |= (fillmask + BOTTOM_MASK(col)) & COL_MASK(col);
+
+		//Vertical
+        uint64_t m = p & (p >> 1);
+        if(m & (m >> 2)) return true;
 		
-		uint64_t m = p & (p >> (HEIGHT+1));
+		//Horizontal
+		m = p & (p >> (HEIGHT+1));
         if(m & (m >> (2*(HEIGHT+1)))) return true;
 
-        // diagonal 1
+        // forward diagonal
         m = p & (p >> HEIGHT);
         if(m & (m >> (2*HEIGHT))) return true;
 
-        // diagonal 2 
+        // backward diagonal 
         m = p & (p >> (HEIGHT+2));
         if(m & (m >> (2*(HEIGHT+2)))) return true;
-
-        // vertical;
-        m = p & (p >> 1);
-        if(m & (m >> 2)) return true;
 
         return false;
 	}
