@@ -17,5 +17,6 @@ namespace Connect4
             int solve(Board board);
             unsigned long long getnnodes();
             void reset();
+            void moveorder(Board board);
     };
 }

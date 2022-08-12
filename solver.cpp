@@ -5,11 +5,17 @@
 
 using namespace Connect4;
 
-namespace Connect4 
+namespace Connect4
 {
-    Solver::Solver() : nnodes(0), hashmap(HASHMAP_SIZE) {
+    Solver::Solver() : nnodes(0), hashmap(HASHMAP_SIZE) 
+    {
         for(int i = 0; i < WIDTH; i++)
             order[i] = WIDTH/2 + (1-2*(i%2))*(i+1)/2;
+    }
+
+    void Solver::moveorder(Board board)
+    {
+        int moves[WIDTH];
     }
 
     int Solver::negamax(Board board, int alpha, int beta)
@@ -50,8 +56,18 @@ namespace Connect4
     }
 
     int Solver::solve(Board board)
-    {   
-        return negamax(board, MIN_SCORE, MAX_SCORE);
+    {
+        int min = -(WIDTH * HEIGHT - board.nmoves())/2;
+        int max = (WIDTH * HEIGHT - board.nmoves())/2;
+        while(min != max) {        
+            int med = min + (max - min)/2;
+            if(med <= 0 && min/2 < med) med = min/2;
+            else if(med >= 0 && max/2 > med) med = max/2;
+            int r = negamax(board, med, med + 1);   
+            if(r <= med) max = r;
+            else min = r;
+        }
+        return min;
     }
 
     unsigned long long Solver::getnnodes()

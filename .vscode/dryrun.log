@@ -1,5 +1,9 @@
-make main --dry-run --keep-going --print-directory
+make main --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/loop/connect4'
-make: 'main' is up to date.
+g++ -c main.cpp
+g++ -c board.cpp
+g++ -c solver.cpp
+g++ -c hashmap.cpp
+g++ main.o board.o solver.o hashmap.o -o main
 make: Leaving directory '/home/loop/connect4'
  
